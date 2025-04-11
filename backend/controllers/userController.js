@@ -1,6 +1,5 @@
 import debug from "debug";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import { freelancerdb, influencerdb, userdb } from "../models/user.js";
 import { generateToken } from "../utils/generateToken.js";
 

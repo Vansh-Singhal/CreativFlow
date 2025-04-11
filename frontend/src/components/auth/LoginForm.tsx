@@ -83,9 +83,9 @@ const LoginForm = () => {
               <Label htmlFor="password">Password</Label>
               <Link
                 to="/forgot-password"
-                className="text-sm text-brand-600 hover:underline"
+                className="text-sm text-gray-600 hover:underline"
               >
-                Forgot password?
+                Forgot password? 
               </Link>
             </div>
             <Input
@@ -99,7 +99,7 @@ const LoginForm = () => {
           </div>
           <Button
             type="submit"
-            className="w-full bg-brand-600 hover:bg-gray-700"
+            className="w-full bg-gray-600 hover:bg-gray-700"
             disabled={isLoading}
           >
             {isLoading ? "Logging in..." : "Log in"}
@@ -109,7 +109,7 @@ const LoginForm = () => {
       <CardFooter>
         <p className="text-center text-sm text-gray-600 mt-2 w-full">
           Don't have an account?{" "}
-          <Link to="/signup" className="text-brand-600 hover:underline">
+          <Link to="/signup" className="text-gray-600 hover:underline">
             Sign up
           </Link>
         </p>

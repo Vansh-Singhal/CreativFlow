@@ -37,7 +37,7 @@ const SignupForm = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto mt-15">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl font-bold text-center">Create an account</CardTitle>
         <CardDescription className="text-center">
@@ -117,7 +117,7 @@ const SignupForm = () => {
           
           <Button 
             type="submit" 
-            className="w-full bg-brand-600 hover:bg-brand-700"
+            className="w-full bg-gray-600 hover:bg-gray-700"
             disabled={isLoading}
           >
             {isLoading ? "Creating account..." : "Create account"}
@@ -125,11 +125,11 @@ const SignupForm = () => {
           
           <p className="text-xs text-gray-500 text-center">
             By clicking Create account, you agree to our{" "}
-            <Link to="/terms" className="text-brand-600 hover:underline">
+            <Link to="/terms" className="text-gray-600 hover:underline">
               Terms of Service
             </Link>{" "}
             and{" "}
-            <Link to="/privacy" className="text-brand-600 hover:underline">
+            <Link to="/privacy" className="text-gray-600 hover:underline">
               Privacy Policy
             </Link>
             .
@@ -139,7 +139,7 @@ const SignupForm = () => {
       <CardFooter>
         <p className="text-center text-sm text-gray-600 mt-2 w-full">
           Already have an account?{" "}
-          <Link to="/login" className="text-brand-600 hover:underline">
+          <Link to="/login" className="text-gray-600 hover:underline">
             Log in
           </Link>
         </p>
