@@ -12,13 +12,13 @@ const reviewSchema = new Schema({
         required: true
     },
     description: {
-        type: String, 
+        type: String,
         required: true
     },
     rating: {
-        type: Number, 
+        type: Number,
         required: true
     }
 }, { timestamps: true });
 
-const reviewdb = mongoose.model('Review', reviewSchema);
+export const reviewdb = mongoose.model('Review', reviewSchema);

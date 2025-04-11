@@ -14,7 +14,7 @@ const jobSchema = new Schema({
         required: true
     },
     client: {
-        type: Schema.Types.ObjectId, 
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
@@ -33,21 +33,21 @@ const jobSchema = new Schema({
     applications: [{
         type: Schema.Types.ObjectId,
         ref: 'Freelancer'
-    }],    
+    }],
     category: {
         type: String,
         required: true
     },
     experience: {
-        type: String, 
+        type: String,
         enum: ['entry', 'intermediate', 'expert', 'any'],
         required: true
     },
     type: {
-        type: String, 
+        type: String,
         enum: ['fixed', 'hourly'],
         required: true
     }
-},{timestamps : true});
+}, { timestamps: true });
 
 export const jobdb = mongoose.model('Job', jobSchema);

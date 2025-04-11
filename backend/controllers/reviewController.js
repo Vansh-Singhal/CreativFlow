@@ -1,6 +1,6 @@
 import debug from "debug";
-import { reviewdb } from "../models/review.js";
-import { userdb, freelancerdb, influencerdb } from "../models/userModel.js";
+import { reviewdb } from "../models/reviews.js";
+import { userdb, freelancerdb, influencerdb } from "../models/user.js";
 
 const dbgr = debug("development:reviewController");
 
