@@ -7,7 +7,8 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        unique : true,
+        required: true,
     },
     contact: {
         type: Number,
@@ -32,13 +33,8 @@ const freelancerSchema = new Schema({
     },
     rank: {
         type: String,
-        enum: ['null', 'bronze', 'silver', 'gold', 'diamond', 'platinum'],
-        default: "null",
-        required: true
-    },
-    rating: {
-        type: Number,
-        default: 5,
+        enum: ['bronze', 'silver', 'gold', 'diamond', 'platinum'],
+        default: null,
         required: true
     },
     reviews: [{
@@ -64,11 +60,6 @@ const influencerSchema = new Schema({
     verified: {
         type: Boolean,
         default: false,
-        required: true
-    },
-    rating: {
-        type: Number,
-        default: 5,
         required: true
     },
     reviews: [{

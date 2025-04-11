@@ -32,10 +32,10 @@ const HeroSection = () => {
               The trusted AI-powered platform connecting influencers with top creative professionals. Secure escrow payments, smart contracts, and verified talent.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg bg-purple-700 hover:bg-purple-800" asChild>
+              <Button size="lg" className="text-lg bg-gradient-to-r from-purple-900  to-purple-700 hover:bg-purple-800" asChild>
                 <Link to="/signup">Get Started</Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-lg" asChild>
+              <Button size="lg" variant="outline" className="text-lg border-purple-800 border-2" asChild>
                 <Link to="/how-it-works">How It Works</Link>
               </Button>
             </div>

@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}Memorandum of Understanding{% endblock %}
+
+{% block content %}
+<div class="text-end mb-3 no-print">
+    <button class="btn btn-secondary me-2" onclick="window.location.href='{{ url_for('index') }}'" aria-label="Edit MoU">
+        <i class="fas fa-edit me-2"></i>Edit
+    </button>
+    <button class="btn btn-primary" onclick="window.print()" aria-label="Print MoU">
+        <i class="fas fa-print me-2"></i>Print MoU
+    </button>
+</div>
+
+<div class="mou-container">
+    <header class="mou-header">
+        <h2>Memorandum of Understanding</h2>
+        <h3>For Protection Against Non-Payment and Unauthorized Use of Work</h3>
+    </header>
+    
+    <div class="mou-section">
+        <h4>1. Parties Involved</h4>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Freelancer</th>
+                    <td>{{ freelancer }}</td>
+                </tr>
+                <tr>
+                    <th>Client</th>
+                    <td>{{ client }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="mou-section">
+        <h4>2. Purpose</h4>
+        <p>This MoU is created to prevent the unauthorized use of the freelancer's work without full or agreed-upon payment and to define the professional conduct expected between both parties.</p>
+    </div>
+    
+    <div class="mou-section">
+        <h4>3. Key Understandings</h4>
+        
+        <h5>a. Work Ownership</h5>
+        <ul>
+            <li>All work created by the Freelancer remains the sole property of the Freelancer until full payment is received.</li>
+            <li>The Client may not use, publish, distribute, or modify the work before payment.</li>
+        </ul>
+        
+        <h5>b. Payment Terms</h5>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Details</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if fee_inr %}
+                <tr>
+                    <th>Project Fee</th>
+                    <td>₹ {{ fee_inr }}</td>
+                </tr>
+                {% elif fee_usd %}
+                <tr>
+                    <th>Project Fee</th>
+                    <td>${{ fee_usd }}</td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <th>Payment Days Allowed</th>
+                    <td>{{ days }} days</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h5>c. Unauthorized Use Clause</h5>
+        <ul>
+            <li>If the Client uses the work without making full payment, legal action may be taken, including takedown requests, copyright claims, and financial penalties.</li>
+        </ul>
+        
+        <h5>d. Termination Rights</h5>
+        <ul>
+            <li>The Freelancer holds the right to cancel or withhold further work if payment is delayed or misused.</li>
+        </ul>
+
+        {% if project_type %}
+        <h5>e. Project Specifics</h5>
+        <ul>
+            <li>This MoU concerns a {{ project_type }} project, with all terms applying specifically to deliverables in this category.</li>
+        </ul>
+        {% endif %}
+    </div>
+    
+    <div class="mou-section">
+        <h4>4. Confidentiality & Mutual Respect</h4>
+        <ul>
+            <li>Both parties agree to maintain professionalism and confidentiality.</li>
+            <li>Harassment, threats, or manipulation for free or discounted work is strictly prohibited.</li>
+            {% if include_confidentiality %}
+            <li>All project details, client information, and proprietary methodologies are to be kept confidential by both parties for a period of 12 months following project completion.</li>
+            {% endif %}
+        </ul>
+    </div>
+    
+    <div class="mou-section">
+        <h4>5. Dispute Resolution</h4>
+        <ul>
+            <li>In case of disagreement, both parties will attempt resolution via communication.</li>
+            <li>If unresolved, the Freelancer may take legal action and report the matter publicly or to freelance platforms.</li>
+        </ul>
+    </div>
+    
+    {% if include_revisions %}
+    <div class="mou-section">
+        <h4>6. Revisions Policy</h4>
+        <ul>
+            <li>The freelancer agrees to provide up to {{ number_of_revisions }} round{% if number_of_revisions|int > 1 %}s{% endif %} of reasonable revisions based on the original project scope.</li>
+            <li>Additional revisions or changes to the project scope may incur additional charges.</li>
+            <li>Revision requests must be submitted within 7 days of delivery of the work.</li>
+        </ul>
+    </div>
+    <div class="mou-section">
+        <h4>7. Acknowledgment</h4>
+    {% else %}
+    <div class="mou-section">
+        <h4>6. Acknowledgment</h4>
+    {% endif %}
+        <p>This MoU is not a legal contract but sets mutual expectations. By signing, both parties agree to follow the terms and respect each other's rights.</p>
+    </div>
+    
+    <div class="mou-section">
+        <h4>{% if include_revisions %}8{% else %}7{% endif %}. Signatures</h4>
+        <div class="row mt-5">
+            <div class="col-md-6 text-center">
+                <div class="signature-line">
+                    <p>{{ freelancer }} <small>(Freelancer Name & Signature)</small></p>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="signature-line">
+                    <p>{{ client }} <small>(Client Name & Signature)</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-6 text-center">
+                <p>Date: ________________</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <p>Date: ________________</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="text-center mt-5">
+        <!-- Removed footer text -->
+    </footer>
+</div>
+{% endblock %}

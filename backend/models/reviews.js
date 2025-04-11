@@ -12,14 +12,13 @@ const reviewSchema = new Schema({
         required: true
     },
     description: {
-        type: String, required: true
+        type: String, 
+        required: true
     },
     rating: {
-        type: Number, required: true
-    },
-    createdAt: {
-        type: Date, default: Date.now
+        type: Number, 
+        required: true
     }
-});
+}, { timestamps: true });
 
 const reviewdb = mongoose.model('Review', reviewSchema);

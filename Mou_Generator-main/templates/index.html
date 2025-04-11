@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}MoU Generator{% endblock %}
+
+{% block content %}
+<div class="card animated-card">
+    <div class="card-header text-center">
+        <i class="fas fa-file-contract me-2"></i>
+        Freelancer MoU Generator
+        <div class="tagline">Protect your work with a professional agreement</div>
+    </div>
+    
+    <div class="card-body">
+        <form method="post">
+            {{ form.hidden_tag() }}
+            
+            <!-- Parties Involved Section -->
+            <div class="section-title">
+                <i class="fas fa-users"></i> Parties Involved
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <label for="{{ form.freelancer_name.id }}" class="form-label">Freelancer Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                        {{ form.freelancer_name(class="form-control", placeholder="Enter your name or business name") }}
+                    </div>
+                    <div class="input-info">Your full legal name or registered business name</div>
+                    {% if form.freelancer_name.errors %}
+                        {% for error in form.freelancer_name.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="{{ form.client_name.id }}" class="form-label">Client Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-building"></i></span>
+                        {{ form.client_name(class="form-control", placeholder="Enter client name or business name") }}
+                    </div>
+                    <div class="input-info">Client's full legal name or registered business name</div>
+                    {% if form.client_name.errors %}
+                        {% for error in form.client_name.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <!-- Payment Terms Section -->
+            <div class="section-title">
+                <i class="fas fa-money-bill-wave"></i> Payment Terms
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <label for="{{ form.project_fee_inr.id }}" class="form-label">Project Fee (INR)</label>
+                    <div class="input-group">
+                        <span class="input-group-text">₹</span>
+                        {{ form.project_fee_inr(class="form-control", placeholder="Enter amount") }}
+                    </div>
+                    {% if form.project_fee_inr.errors %}
+                        {% for error in form.project_fee_inr.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="{{ form.project_fee_usd.id }}" class="form-label">Project Fee (USD)</label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        {{ form.project_fee_usd(class="form-control", placeholder="Enter amount") }}
+                    </div>
+                    <div class="input-info">You can enter either INR or USD or both</div>
+                    {% if form.project_fee_usd.errors %}
+                        {% for error in form.project_fee_usd.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="row g-4 mt-1">
+                <div class="col-md-6">
+                    <label for="{{ form.payment_days.id }}" class="form-label">
+                        Payment Days
+                        <span class="tooltip-icon" title="Maximum number of days allowed for payment after work delivery">
+                            <i class="fas fa-question-circle"></i>
+                        </span>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
+                        {{ form.payment_days(class="form-control", min=1) }}
+                    </div>
+                    <div class="input-info">Days allowed for payment after work delivery</div>
+                    {% if form.payment_days.errors %}
+                        {% for error in form.payment_days.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="{{ form.project_type.id }}" class="form-label">Project Type</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-project-diagram"></i></span>
+                        {{ form.project_type(class="form-select") }}
+                    </div>
+                    {% if form.project_type.errors %}
+                        {% for error in form.project_type.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <!-- Additional Terms Section -->
+            <div class="section-title">
+                <i class="fas fa-file-alt"></i> Additional Terms
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="form-check form-switch">
+                        {{ form.include_confidentiality(class="form-check-input") }}
+                        <label class="form-check-label" for="{{ form.include_confidentiality.id }}">Include confidentiality clause</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-check form-switch">
+                        {{ form.include_revisions(class="form-check-input") }}
+                        <label class="form-check-label" for="{{ form.include_revisions.id }}">Include revisions policy</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-3">
+                <div class="col-md-6">
+                    <label for="{{ form.number_of_revisions.id }}" class="form-label">
+                        Number of Revisions
+                        <span class="tooltip-icon" title="Specify the maximum number of revisions allowed for the project.">
+                            <i class="fas fa-question-circle"></i>
+                        </span>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-sync-alt"></i></span>
+                        {{ form.number_of_revisions(class="form-control", min=0, placeholder="Enter number of revisions") }}
+                    </div>
+                    <div class="input-info">Specify the number of revisions allowed</div>
+                    {% if form.number_of_revisions.errors %}
+                        {% for error in form.number_of_revisions.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="mt-4 pt-3">
+                {{ form.submit(class="btn btn-primary generate-btn w-100") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
